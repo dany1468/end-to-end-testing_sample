@@ -11,7 +11,7 @@ namespace AtataSample
         {
             AtataContext.Configure().
                 UseChrome().
-                UseBaseUrl("https://demo.atata.io/").
+                UseBaseUrl("https://localhost:5001/").
                 UseNUnitTestName().
                 AddNUnitTestContextLogging().
                 AddScreenshotFileSaving().
@@ -29,10 +29,23 @@ namespace AtataSample
         [Test]
         public void SignIn()
         {
-            Go.To<SignInPage>().
+            Go.To<LogInPage>().
                 Email.Set("admin@mail.com").
                 Password.Set("abc123").
-                SignIn.Click();
+                LogIn.Click()
+                .UnorderedList.Items.Count.Should.Equal(1)
+                .UnorderedList.Items[0].Content.Should.Equal("Invalid login attempt.");
+        }
+
+        [Test]
+        public void SignInAndGoHome()
+        {
+            Go.To<LogInPage>()
+                .Email.Set("admin@mail.com")
+                .Password.Set("P@55w0rd")
+                .LogIn()
+                .FetchData()
+                .WeatherTable.Rows.Count.Should.Equal(5);
         }
     }
 }

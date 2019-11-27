@@ -1,4 +1,4 @@
 ﻿using Atata;
 
-[assembly: Culture("en-us")]
-[assembly: VerifyTitleSettings(Format = "{0} - Atata Sample App")]
+[assembly: Culture("ja-JP")]
+//[assembly: VerifyTitleSettings(Format = "{0} - SampleSpaSite")]

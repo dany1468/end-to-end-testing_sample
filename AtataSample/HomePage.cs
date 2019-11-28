@@ -6,7 +6,6 @@ namespace AtataSample
 
     [Url("/")]
     [VerifyTitle("SampleSpaSite")]
-    [VerifyH1("Hello, world!")]
     public class HomePage : Page<_>
     {
         [FindByContent("Fetch data")]
